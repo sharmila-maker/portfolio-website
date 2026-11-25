@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sharmila A | Portfolio</title>
+<meta name="description" content="Portfolio of Sharmila A, third-year B.Tech Information Technology student: projects, skills, achievements and contact.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one dark column, gold hairlines, hero with name set large, sections as labeled rows. */
+:root {
+  --bg: #0d0c0a;
+  --surface: #17150f;
+  --line: #2e2a1d;
+  --fg: #f1ece0;
+  --muted: #a39b86;
+  --gold: #d4a937;
+  --gold-soft: #e8c868;
+  --font-display: "DM Serif Display", Georgia, serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 960px; margin: 0 auto; position: relative; z-index: 1; }
+#glitter { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+a { color: var(--gold-soft); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+header.top { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; align-items: center; padding-block: 20px; border-bottom: 1px solid var(--line); }
+.mark { font-family: var(--font-display); font-size: 1.25rem; color: var(--gold); text-decoration: none; }
+nav { display: flex; flex-wrap: wrap; gap: 4px 20px; font-size: 0.85rem; }
+nav a { color: var(--muted); text-decoration: none; }
+nav a:hover { color: var(--gold-soft); }
+
+.hero { padding-block: 72px 56px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 40px; align-items: center; }
+.portrait { margin: 0; position: relative; width: 240px; aspect-ratio: 1; border-radius: 50%; padding: 6px; background: conic-gradient(from 210deg, #8a6a1c, #f6dc8a, #d4a937, #fff3c4, #b8892a, #8a6a1c); box-shadow: 0 0 0 8px var(--bg), 0 0 0 9px var(--line), 0 18px 50px rgba(0,0,0,.55), 0 0 60px rgba(212,169,55,.16); justify-self: center; }
+.portrait img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 4px solid var(--bg); }
+.portrait .mono { position: absolute; inset: 6px; display: none; align-items: center; justify-content: center; border-radius: 50%; font-family: var(--font-display); font-size: 4.5rem; color: var(--gold); background: linear-gradient(160deg, #1d1a10, #0d0c0a); border: 4px solid var(--bg); }
+.portrait.nophoto .mono { display: flex; }
+.portrait.nophoto img { display: none; }
+.open-badge { position: absolute; left: 50%; bottom: -16px; transform: translateX(-50%); white-space: nowrap; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: #14110a; background: var(--gold); padding: 5px 12px; border-radius: 999px; box-shadow: 0 4px 14px rgba(0,0,0,.5); }
+.eyebrow { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin: 0 0 20px; }
+h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(2.8rem, 11vw, 5.6rem); line-height: 1.02; margin: 0 0 24px; text-wrap: balance; }
+h1 em { font-style: italic; color: var(--gold); background: linear-gradient(100deg, #b8892a 0%, #f6dc8a 35%, #d4a937 50%, #fff3c4 62%, #b8892a 100%); background-size: 220% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: shimmer 5s linear infinite; }
+@keyframes shimmer { from { background-position: 100% 0; } to { background-position: -120% 0; } }
+.lede { max-width: 56ch; font-size: 1.1rem; color: var(--muted); margin: 0 0 32px; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-block; padding: 12px 22px; border: 1px solid var(--gold); color: var(--gold-soft); text-decoration: none; font-weight: 500; font-size: 0.95rem; border-radius: 2px; background: transparent; font-family: inherit; cursor: pointer; }
+.btn.solid { background: var(--gold); color: #14110a; }
+.btn:hover { background: var(--gold-soft); color: #14110a; border-color: var(--gold-soft); }
+
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0; border-block: 1px solid var(--line); margin-top: 8px; }
+.facts div { padding: 18px 16px 18px 0; min-width: 0; }
+.facts dt { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.facts dd { margin: 4px 0 0; font-family: var(--font-display); font-size: 1.35rem; }
+.facts { margin-bottom: 0; }
+
+section { padding-block: 64px 8px; }
+.sec-head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 28px; }
+h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.8rem, 6vw, 2.5rem); margin: 0; }
+.sec-head::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+
+.about p { max-width: 64ch; margin: 0 0 16px; color: var(--fg); }
+
+.skill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+.skill-grid h3 { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin: 0 0 12px; font-weight: 500; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.chips li { font-family: var(--font-mono); font-size: 0.78rem; padding: 4px 10px; border: 1px solid var(--line); color: var(--fg); border-radius: 2px; }
+
+.projects { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.project { background: var(--surface); border: 1px solid var(--line); padding: 24px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.project .tag { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+.project h3 { font-family: var(--font-display); font-weight: 400; font-size: 1.5rem; margin: 0; line-height: 1.2; }
+.project p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+.project ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 0.92rem; }
+.project .chips { margin-top: auto; padding-top: 8px; }
+
+.timeline { list-style: none; margin: 0; padding: 0; }
+.timeline li { display: grid; grid-template-columns: minmax(0, 150px) minmax(0, 1fr); gap: 8px 24px; padding-block: 18px; border-top: 1px solid var(--line); }
+.timeline li:last-child { border-bottom: 1px solid var(--line); }
+.timeline .when { font-family: var(--font-mono); font-size: 0.8rem; color: var(--gold); }
+.timeline h3 { margin: 0 0 4px; font-size: 1.05rem; font-weight: 600; }
+.timeline p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+
+.contact { padding-bottom: 72px; }
+.contact-list { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.contact-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; padding-block: 16px; border-bottom: 1px solid var(--line); }
+.contact-row .k { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); width: 90px; flex: none; }
+.contact-row .v { flex: 1; min-width: 0; overflow-wrap: anywhere; user-select: all; }
+.copy { font-family: var(--font-mono); font-size: 0.72rem; padding: 4px 10px; background: transparent; color: var(--gold-soft); border: 1px solid var(--line); border-radius: 2px; cursor: pointer; }
+.copy:hover { border-color: var(--gold); }
+
+footer { border-top: 1px solid var(--line); padding-block: 24px; color: var(--muted); font-size: 0.85rem; }
+
+.contact-grid { display: grid; gap: 28px; margin-bottom: 28px; }
+form.msg { display: grid; gap: 14px; background: var(--surface); border: 1px solid var(--line); padding: 24px; }
+form.msg h3 { font-family: var(--font-display); font-weight: 400; font-size: 1.5rem; margin: 0; }
+form.msg label { display: grid; gap: 6px; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+form.msg input, form.msg textarea { font: inherit; font-family: var(--font-body); font-size: 1rem; letter-spacing: 0; text-transform: none; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 2px; padding: 12px 14px; width: 100%; }
+form.msg textarea { min-height: 130px; resize: vertical; }
+form.msg input:focus-visible, form.msg textarea:focus-visible { outline: 2px solid var(--gold); outline-offset: 1px; border-color: var(--gold); }
+form.msg .row { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+form.msg .hp { position: absolute; left: -9999px; height: 0; overflow: hidden; }
+.form-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.btn[disabled] { opacity: .6; cursor: wait; }
+.status { min-height: 1.4em; font-size: 0.95rem; margin: 0; color: var(--muted); }
+.status.ok { color: #8fd694; }
+.status.err { color: #ff9d8a; }
+@media (max-width: 720px) { .hero { grid-template-columns: 1fr; } .portrait { width: 190px; order: -1; margin-bottom: 8px; } }
+@media (max-width: 560px) {
+  .timeline li { grid-template-columns: 1fr; }
+  .hero { padding-block: 48px 40px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } h1 em { animation: none; } #glitter { display: none; } }
+</style>
+</head>
+<body>
+<canvas id="glitter" aria-hidden="true"></canvas>
+<div class="wrap">
+  <header class="top">
+    <a class="mark" href="#home">Sharmila A</a>
+    <nav aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="home">
+    <div class="hero">
+      <div class="hero-text">
+      <p class="eyebrow">Third-year B.Tech Information Technology</p>
+      <h1>I build things that <em>detect, predict</em> and ship.</h1>
+      <p class="lede">I am Sharmila, an IT student who builds computer vision and AI projects, wins website and debugging competitions, and is now looking for an internship in software development.</p>
+      <div class="cta">
+        <a class="btn solid" href="#projects">See my projects</a>
+        <a class="btn" href="#contact">Get in touch</a>
+      </div>
+      </div>
+      <figure class="portrait" id="portrait">
+        <img src="photo.jpg" alt="Portrait of Sharmila A" width="228" height="228" onerror="this.parentNode.classList.add('nophoto')">
+        <span class="mono" aria-hidden="true">SA</span>
+        <span class="open-badge">Open to internships</span>
+      </figure>
+    </div>
+    <dl class="facts">
+      <div><dt>Year</dt><dd>3rd, B.Tech IT</dd></div>
+      <div><dt>Hackathons</dt><dd>HackIndia, SIH</dd></div>
+      <div><dt>Podium finishes</dt><dd>1st and 2nd</dd></div>
+      <div><dt>Looking for</dt><dd>Internship</dd></div>
+    </dl>
+
+    <section id="about" class="about">
+      <div class="sec-head"><h2>About</h2></div>
+      <p>I am a third-year Information Technology student at Adhiparasakthi Engineering College, Melmaruvathur. I like turning a problem statement into a working system, from the first dataset to the last demo screen.</p>
+      <p>I take part in hackathons and technical symposiums. I have placed first in website creation and second in debugging at inter-college events, and I keep building projects outside the classroom so my skills stay close to what industry teams use.</p>
+      <p>I speak English, Tamil, Hindi and Urdu.</p>
+    </section>
+
+    <section id="skills">
+      <div class="sec-head"><h2>Skills</h2></div>
+      <div class="skill-grid">
+        <div>
+          <h3>Languages</h3>
+          <ul class="chips"><li>Python</li><li>C</li><li>C++</li><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+        </div>
+        <div>
+          <h3>AI and vision</h3>
+          <ul class="chips"><li>OpenCV</li><li>MediaPipe</li><li>OpenAI</li><li>Gemini</li><li>Google Colab</li></ul>
+        </div>
+        <div>
+          <h3>Web and backend</h3>
+          <ul class="chips"><li>React</li><li>Vite</li><li>Tailwind</li><li>FastAPI</li></ul>
+        </div>
+        <div>
+          <h3>Tools</h3>
+          <ul class="chips"><li>Git and GitHub</li><li>MS Word</li><li>MS Excel</li><li>MS Office</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="sec-head"><h2>Projects</h2></div>
+      <div class="projects">
+        <article class="project">
+          <span class="tag">Computer vision</span>
+          <h3>DriveGuardian AI</h3>
+          <p>A driver drowsiness detection system that watches the driver's face and raises an alert before fatigue becomes dangerous.</p>
+          <ul>
+            <li>PERCLOS eye-closure measurement, head pose estimation, yawn detection and gaze tracking</li>
+            <li>Multi-signal fusion with per-driver calibration to cut false alarms</li>
+          </ul>
+          <ul class="chips"><li>Python</li><li>OpenCV</li><li>MediaPipe</li></ul>
+        </article>
+        <article class="project">
+          <span class="tag">24-hour hackathon</span>
+          <h3>HealthNexus AI</h3>
+          <p>A healthcare decision-support prototype that follows a patient from changes in their records to hospital readiness, with every score explained.</p>
+          <ul>
+            <li>Patient dashboard, vitals trends, lab reports, a care timeline and a "What changed?" comparison</li>
+            <li>Rule-based, explainable risk indicators on synthetic data, not diagnoses</li>
+          </ul>
+          <ul class="chips"><li>React</li><li>Vite</li><li>Tailwind</li><li>FastAPI</li></ul>
+        </article>
+        <article class="project">
+          <span class="tag">Smart India Hackathon</span>
+          <h3>SIF Precursor Detection</h3>
+          <p>An NLP engine for the oil industry that reads unsafe-act, unsafe-condition and near-miss reports to spot early signs of serious injury or fatality.</p>
+          <ul>
+            <li>Designed around a causal knowledge graph, escalation prediction and SHAP-style explanations</li>
+            <li>Trained on public incident data such as OSHA severe injury reports</li>
+          </ul>
+          <ul class="chips"><li>Python</li><li>NLP</li><li>Machine learning</li></ul>
+        </article>
+        <article class="project">
+          <span class="tag">1st place, inter-college symposium</span>
+          <h3>BuildLite Studio</h3>
+          <p>A web-based project built for the Website Creation Competition, where it took first place among teams from other colleges.</p>
+          <ul class="chips"><li>Web development</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="achievements">
+      <div class="sec-head"><h2>Achievements</h2></div>
+      <ol class="timeline">
+        <li>
+          <span class="when">1st place</span>
+          <div><h3>Website Creation Competition</h3><p>Inter-College Symposium, for building BuildLite Studio.</p></div>
+        </li>
+        <li>
+          <span class="when">2nd place</span>
+          <div><h3>Debugging Competition</h3><p>Inter-College Symposium, for analytical and programming skill under time pressure.</p></div>
+        </li>
+        <li>
+          <span class="when">Participant</span>
+          <div><h3>HackIndia Hackathon</h3><p>Hands-on experience in problem solving, teamwork and building a project quickly.</p></div>
+        </li>
+        <li>
+          <span class="when">First Class</span>
+          <div><h3>Typewriting, English, Junior Grade</h3><p>Passed with First Class.</p></div>
+        </li>
+      </ol>
+    </section>
+
+    <section id="education">
+      <div class="sec-head"><h2>Education</h2></div>
+      <ol class="timeline">
+        <li>
+          <span class="when">Pursuing, 3rd year</span>
+          <div><h3>B.Tech Information Technology</h3><p>Adhiparasakthi Engineering College, Melmaruvathur</p></div>
+        </li>
+        <li>
+          <span class="when">HSLC</span>
+          <div><h3>73.66%</h3><p>Kingston Matriculation Higher Secondary School</p></div>
+        </li>
+        <li>
+          <span class="when">SSLC</span>
+          <div><h3>72.8%</h3><p>Kingston Matriculation Higher Secondary School</p></div>
+        </li>
+      </ol>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="sec-head"><h2>Contact</h2></div>
+      <p style="max-width:56ch;margin:0 0 24px;color:var(--muted)">I am open to internships in software development and AI. Write or call, or look through my code on GitHub.</p>
+      <div class="contact-grid">
+        <form class="msg" id="msgform" novalidate>
+          <h3>Send me a message</h3>
+          <div class="row">
+            <label>Your name<input type="text" name="from_name" autocomplete="name" required></label>
+            <label>Your email<input type="email" name="from_email" autocomplete="email" required></label>
+          </div>
+          <label>Message<textarea name="message" required></textarea></label>
+          <label class="hp" aria-hidden="true">Leave empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+          <div class="form-actions">
+            <button class="btn solid" type="submit" id="sendbtn">Send message</button>
+            <a class="btn" id="wabtn" href="https://wa.me/918610557485?text=Hi%20Sharmila%2C%20I%20saw%20your%20portfolio." target="_blank" rel="noopener">WhatsApp me</a>
+          </div>
+          <p class="status" id="status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+      <div class="contact-list">
+        <div class="contact-row"><span class="k">Email</span><span class="v" id="v-email">a.sharmilaa818@gmail.com</span><button class="copy" type="button" data-target="v-email">Copy</button></div>
+        <div class="contact-row"><span class="k">Phone</span><span class="v" id="v-phone">+91 86105 57485</span><button class="copy" type="button" data-target="v-phone">Copy</button></div>
+        <div class="contact-row"><span class="k">GitHub</span><a class="v" href="https://github.com/sharmila-maker" target="_blank" rel="noopener">github.com/sharmila-maker</a></div>
+        <div class="contact-row"><span class="k">LinkedIn</span><a class="v" href="https://www.linkedin.com/in/sharmila-a-77ba1b32b" target="_blank" rel="noopener">linkedin.com/in/sharmila-a-77ba1b32b</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>Sharmila A, B.Tech Information Technology, 3rd year.</footer>
+</div>
+
+<script>
+document.querySelectorAll('.copy').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var el = document.getElementById(btn.dataset.target);
+    var text = el.textContent.trim();
+    var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1500); };
+    var fallback = function () {
+      var r = document.createRange(); r.selectNodeContents(el);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = 'Selected'; setTimeout(function () { btn.textContent = 'Copy'; }, 1500);
+    };
+    try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
+  });
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js"></script>
+<script>
+/* ===== Message form settings (see README.txt, step "Make the form send e-mails") ===== */
+var MAIL_CONFIG = {
+  publicKey: '',          // EmailJS Public Key
+  serviceId: '',          // EmailJS Service ID (your Gmail)
+  templateId: '',         // template that e-mails YOU the visitor's message
+  autoReplyTemplateId: '' // optional template that e-mails the VISITOR a thank-you reply
+};
+var MY_EMAIL = 'a.sharmilaa818@gmail.com';
+
+/* ===== Glitter ===== */
+(function () {
+  var c = document.getElementById('glitter');
+  if (!c || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var x = c.getContext('2d'), W, H, dpr = Math.min(window.devicePixelRatio || 1, 2), P = [];
+  var COLORS = ['#d4a937', '#e8c868', '#fff3c4', '#f6dc8a'];
+  function size() { W = innerWidth; H = innerHeight; c.width = W * dpr; c.height = H * dpr; x.setTransform(dpr, 0, 0, dpr, 0, 0); }
+  function make(px, py, burst) {
+    return { x: px, y: py, r: burst ? 2 + Math.random() * 3 : 1 + Math.random() * 2.6,
+      vx: burst ? (Math.random() - .5) * 1.6 : (Math.random() - .5) * .25,
+      vy: burst ? (Math.random() - .3) * 1.4 : .15 + Math.random() * .35,
+      t: Math.random() * 6.28, s: .02 + Math.random() * .04,
+      life: burst ? 60 + Math.random() * 30 : Infinity, col: COLORS[(Math.random() * COLORS.length) | 0] };
+  }
+  function star(p, a) {
+    var r = p.r * (1 + .5 * Math.sin(p.t)); x.globalAlpha = a; x.fillStyle = p.col;
+    x.beginPath(); x.moveTo(p.x, p.y - r * 2.2); x.quadraticCurveTo(p.x, p.y, p.x + r * 2.2, p.y);
+    x.quadraticCurveTo(p.x, p.y, p.x, p.y + r * 2.2); x.quadraticCurveTo(p.x, p.y, p.x - r * 2.2, p.y);
+    x.quadraticCurveTo(p.x, p.y, p.x, p.y - r * 2.2); x.fill();
+  }
+  function init() { size(); P = []; var n = Math.min(70, Math.round(W * H / 22000)); for (var i = 0; i < n; i++) P.push(make(Math.random() * W, Math.random() * H, false)); }
+  function frame() {
+    x.clearRect(0, 0, W, H);
+    for (var i = P.length - 1; i >= 0; i--) {
+      var p = P[i]; p.x += p.vx; p.y += p.vy; p.t += p.s;
+      var a = .25 + .55 * Math.abs(Math.sin(p.t));
+      if (p.life !== Infinity) { p.life--; a *= Math.max(p.life / 90, 0); if (p.life <= 0) { P.splice(i, 1); continue; } }
+      else { if (p.y > H + 10) { p.y = -10; p.x = Math.random() * W; } if (p.x < -10) p.x = W + 10; if (p.x > W + 10) p.x = -10; }
+      star(p, a);
+    }
+    x.globalAlpha = 1; requestAnimationFrame(frame);
+  }
+  var last = 0;
+  addEventListener('pointermove', function (e) { var n = Date.now(); if (n - last < 40 || P.length > 160) return; last = n; P.push(make(e.clientX, e.clientY, true)); }, { passive: true });
+  addEventListener('resize', init); init(); frame();
+})();
+
+/* ===== Message form ===== */
+(function () {
+  var f = document.getElementById('msgform'); if (!f) return;
+  var st = document.getElementById('status'), btn = document.getElementById('sendbtn');
+  function say(t, k) { st.textContent = t; st.className = 'status' + (k ? ' ' + k : ''); }
+  var ready = MAIL_CONFIG.publicKey && MAIL_CONFIG.serviceId && MAIL_CONFIG.templateId && window.emailjs;
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var d = { from_name: f.from_name.value.trim(), from_email: f.from_email.value.trim(), message: f.message.value.trim() };
+    if (f.website.value) return; /* spam trap */
+    if (!d.from_name || !d.message || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.from_email)) { say('Please fill in your name, a valid email and a message.', 'err'); return; }
+    if (!ready) { /* fallback: open the visitor's mail app with everything filled in */
+      location.href = 'mailto:' + MY_EMAIL + '?subject=' + encodeURIComponent('Portfolio message from ' + d.from_name) + '&body=' + encodeURIComponent(d.message + '\n\nFrom: ' + d.from_name + ' (' + d.from_email + ')');
+      say('Opening your mail app. If nothing opens, write to ' + MY_EMAIL + '.'); return;
+    }
+    btn.disabled = true; say('Sending...');
+    var p = { from_name: d.from_name, from_email: d.from_email, reply_to: d.from_email, message: d.message, to_email: MY_EMAIL };
+    emailjs.send(MAIL_CONFIG.serviceId, MAIL_CONFIG.templateId, p, { publicKey: MAIL_CONFIG.publicKey })
+      .then(function () {
+        if (MAIL_CONFIG.autoReplyTemplateId) { return emailjs.send(MAIL_CONFIG.serviceId, MAIL_CONFIG.autoReplyTemplateId, p, { publicKey: MAIL_CONFIG.publicKey }).catch(function () {}); }
+      })
+      .then(function () { f.reset(); say('Thank you! Your message is sent. I will reply soon.', 'ok'); })
+      .catch(function () { say('Could not send right now. Please use WhatsApp or write to ' + MY_EMAIL + '.', 'err'); })
+      .then(function () { btn.disabled = false; });
+  });
+})();
+</script>
+</body>
+</html>
